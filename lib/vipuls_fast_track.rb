@@ -1,16 +1,16 @@
 require_relative "vipuls_fast_track/version"
-
-customers = [
-  {
-    customer_name: "jack douglas",
-    monthly_income: 5000,
-    monthly_expenses: 2200},
-  {
-    customer_name: "james anderson",
-    monthly_income: 4000,
-    monthly_expenses: 1800
-  }
-]
+require 'csv'
+# customers = [
+#   {
+#     customer_name: "jack douglas",
+#     monthly_income: 5000,
+#     monthly_expenses: 2200},
+#   {
+#     customer_name: "james anderson",
+#     monthly_income: 4000,
+#     monthly_expenses: 1800
+#   }
+# ]
 
 puts "WELCOME TO NAB  CREDIT CARDS"
 puts "*" *40
@@ -25,8 +25,8 @@ if customer_input = 1
   name = gets.chomp
   
   customers.each do |customer|
-    if name == customer[:customer_name] &&
-    puts "hello"
+    if name == customer[:customer_name]
+    
 
     end
   end
