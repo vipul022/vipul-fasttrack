@@ -1,3 +1,4 @@
-nab_id,customer_name,monthly_income,monthly_expenses,
-0001,"jack douglas",5000,2200
- 002,"james anderson",4000,1800
+nab_id,customer_name,monthly_income,monthly_expenses
+0001,jack douglas,8888,2200
+0002,james anderson,4000,2500vip,333
+,,,
