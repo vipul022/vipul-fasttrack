@@ -40,7 +40,7 @@ def check_details
     exist_customer = true
   end
 
-  puts 'Invalid NAB ID' unless exist_customer
+  puts 'Invalid NAB ID'.yellow unless exist_customer
 end
 
 def new_customer
@@ -95,7 +95,7 @@ def apply_credit_card
     end
   elsif customer_input == 'no'
     new_customer
-   
+
   end
 end
 
@@ -104,7 +104,7 @@ def update_credit_card
   puts 'Do you want to update your monthly income? (reply yes/no)'.light_blue
   puts '-' * 40
   customer_input = gets.chomp
-  if   customer_input == 'yes'
+  if customer_input == 'yes'
     puts 'Please enter your NAB ID'.light_blue
     id_input = gets.chomp
     puts 'Please enter your updated monthly income'.light_blue
