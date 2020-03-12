@@ -28,24 +28,20 @@ def read_customers_csv
 def check_details
   exist_customer = false
   customers = read_customers_csv
-  puts "please enter your NAB ID".red
+  puts 'please enter your NAB ID'.red
   customer_input = gets.chomp
   customers.each do |customer|
     customer = customer.to_hash
-    if customer_input == customer['nab_id']
-      puts "customer name: #{customer['customer_name']}".green
-      puts "monthly income: $ #{customer['monthly_income']}".green
-      puts "monthly expenses: $ #{customer['monthly_expenses']}".green
-      exist_customer = true
-    end
+    next unless customer_input == customer['nab_id']
+
+    puts "customer name: #{customer['customer_name']}".green
+    puts "monthly income: $ #{customer['monthly_income']}".green
+    puts "monthly expenses: $ #{customer['monthly_expenses']}".green
+    exist_customer = true
   end
 
-  if !exist_customer   
-    puts "Invalid NAB ID"
-  end
-end 
-    
-   
+  puts 'Invalid NAB ID' unless exist_customer
+end
 
 def new_customer
   puts 'what is your full name?'.light_blue
@@ -54,37 +50,33 @@ def new_customer
   income = gets.chomp.to_i
   puts 'what are your monthly expenses?'.light_blue
   expenses = gets.chomp.to_i
-  new_clint = [name,income,expenses]
+  new_clint = [name, income, expenses]
   monthly_surplus = income - expenses
   if monthly_surplus > 2000
     puts
     puts 'Congratulations your application has been approved'.green
-    puts '-' *40
-  else 
-    puts 
+    puts '-' * 40
+  else
+    puts
     puts 'SORRY!!!! your application has been declined'.yellow
-    puts '-' *40
-  end 
-  CSV.open('customers.csv' , 'a') do |csv|
-   csv  << new_clint
+    puts '-' * 40
+  end
+  CSV.open('customers.csv', 'a') do |csv|
+    csv << new_clint
   end
 end
-    
-    
 
 def find_customer(customers, id_input)
   customers.each do |customer|
     customer_hash = customer.to_hash
-    if id_input == customer["nab_id"] 
-      return customer_hash
-    end 
-  end 
+    return customer_hash if id_input == customer['nab_id']
+  end
 end
 
 def apply_credit_card
   customers = read_customers_csv
-  puts "-" * 40
-  puts 'Are you a current NAB customer?(reply yes/no)'.red 
+  puts '-' * 40
+  puts 'Are you a current NAB customer?(reply yes/no)'.red
   customer_input = gets.chomp
   if customer_input == 'yes'
     puts 'please enter your NAB ID'.red
@@ -94,7 +86,7 @@ def apply_credit_card
     if (id_input == (customer['nab_id'])) && (monthly_surplus > 2000)
       puts
       puts "Your monthly surplus is $ #{monthly_surplus}.".green
-      puts 
+      puts
       puts 'Congratulations your application has been approved.'.green
     else
       puts
@@ -102,59 +94,57 @@ def apply_credit_card
       puts
     end
   elsif customer_input == 'no'
-    new_customer 
-  end  
-end 
-        
-        
- def update_credit_card
-    customers = read_customers_csv
-    puts 'Do you want to update your monthly income? (reply yes/no)'.light_blue
-    puts '-' *40
-    customer_input = gets.chomp
-    if customer_input =='yes'
-      puts 'Please enter your NAB ID'.light_blue
-      id_input = gets.chomp
-      puts 'Please enter your updated monthly income'.light_blue 
-      new_income = gets.chomp
-      customers.each do |customer|
-        if customer["nab_id"] == id_input
-          customer["monthly_income"] = new_income
-        end
-      end  
-      puts      
-      puts 'Your monthly income has been successfully updated'.green      
-      CSV.open('customers.csv', 'w') do |csv|
-        csv << ['nab_id','customer_name','monthly_income','monthly_expenses']
-        customers.each do |customer|
-          csv << customer.to_h.values
-        end
-      end
-    else  
-      exit
-    end
- end       
-              
+    new_customer
+   
+  end
+end
 
-  def cancel_credit_card
-       customers = read_customers_csv
-        puts "Do you want to cancel your credit card? (reply yes/no)".light_blue
-          customer_input = gets.chomp
-            if customer_input == 'yes'
-                puts " Please enter your NAB id".light_blue
-                 id_input = gets.chomp 
-                  customers.each do |customer|
-                   if customer['nab_id'] == id_input
-                    puts
-                    puts 'Your credit card has been cancelled'.yellow
-                    puts
-                 end
-                end 
-                 else exit
-               end 
-  end      
-                     
-while true
+def update_credit_card
+  customers = read_customers_csv
+  puts 'Do you want to update your monthly income? (reply yes/no)'.light_blue
+  puts '-' * 40
+  customer_input = gets.chomp
+  if customer_input == 'yes'
+    puts 'Please enter your NAB ID'.light_blue
+    id_input = gets.chomp
+    puts 'Please enter your updated monthly income'.light_blue
+    new_income = gets.chomp
+    customers.each do |customer|
+      customer['monthly_income'] = new_income if customer['nab_id'] == id_input
+    end
+    puts
+    puts 'Your monthly income has been successfully updated'.green
+    CSV.open('customers.csv', 'w') do |csv|
+      csv << %w[nab_id customer_name monthly_income monthly_expenses]
+      customers.each do |customer|
+        csv << customer.to_h.values
+      end
+    end
+  else
+    exit
+  end
+end
+
+def cancel_credit_card
+  customers = read_customers_csv
+  puts 'Do you want to cancel your credit card? (reply yes/no)'.light_blue
+  customer_input = gets.chomp
+  if customer_input == 'yes'
+    puts ' Please enter your NAB id'.light_blue
+    id_input = gets.chomp
+    customers.each do |customer|
+      next unless customer['nab_id'] == id_input
+
+      puts
+      puts 'Your credit card has been cancelled'.yellow
+      puts
+    end
+  else
+    exit
+  end
+end
+
+loop do
   customer_input = menu
   case customer_input
   when 1
@@ -164,19 +154,7 @@ while true
   when 3
     update_credit_card
   when 4
-    cancel_credit_card 
-  else exit  
+    cancel_credit_card
+  else exit
   end
 end
-
-
-
-                   
-
-
-    
-      
-
-    
-
-
