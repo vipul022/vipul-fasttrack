@@ -34,19 +34,18 @@ Further it writes the complete CSV file by firstly pushing an array of headers i
 ## R7-
 It's very easy to install in a user's smart phone. The instructions for tha installation are mentioned below. The user can this application for multiple purposes. There is a menu which explains very clearly about all the features. The user can apply for a new credit card by clicking option 1 and after providing his details, the result of the application will be displayed at the bottom. The user can also check his existing account details by simply clicking option 2 from the menu. And after following the prompts, the details will displayed at the bottom. This application can used to update by user in updating details as well. After entering the NAB ID, the monthly income will be updated and a confirmation message will be displayed at the bottom. In order to cancel the credit card, user need to enter the valid NAB ID, and the credit card will be cancelled easily. In terms of handling the errors, any time user enter any invalid input, a related message will be displayed.
 
+## R8 
 
 
 
-
-
-
-
-
+![alt text](./flowchart.png 'Diagram of app data flow')
 
 ## R9
-Please click on the link below to check the implementation plan
+
+Please click on the link below to check the implementation plan of the app:
 https://trello.com/b/47bWD3FQ/credit-card-application
 
+![trello board](./trelloboard.png 'screen shot ')
 ## R10
 1. Install ruby. In class we used `rbenv` but feel free to use any ruby installation method. To verify you have ruby installed run:
 

@@ -1,6 +1,4 @@
-# frozen_string_literal: true
 
-# require_relative "vipuls_fast_track/version"
 require 'csv'
 require 'colorize'
 
@@ -44,11 +42,11 @@ def check_details
 end
 
 def new_customer
-  puts 'what is your full name?'.light_blue
+  puts 'what is your full name?'.red
   name = gets.chomp
-  puts 'whats is your monthly income?'.light_blue
+  puts 'whats is your monthly income?'.red
   income = gets.chomp.to_i
-  puts 'what are your monthly expenses?'.light_blue
+  puts 'what are your monthly expenses?'.red
   expenses = gets.chomp.to_i
   new_clint = [name, income, expenses]
   monthly_surplus = income - expenses
@@ -90,6 +88,7 @@ def apply_credit_card
       puts 'Congratulations your application has been approved.'.green
     else
       puts
+      puts "Your monthly surplus is $ #{monthly_surplus} which is below $2000.".yellow
       puts 'SORRY!!!! your application has been declined'.yellow
       puts
     end
@@ -101,13 +100,13 @@ end
 
 def update_credit_card
   customers = read_customers_csv
-  puts 'Do you want to update your monthly income? (reply yes/no)'.light_blue
+  puts 'Do you want to update your monthly income? (reply yes/no)'.red
   puts '-' * 40
   customer_input = gets.chomp
   if customer_input == 'yes'
-    puts 'Please enter your NAB ID'.light_blue
+    puts 'Please enter your NAB ID'.red
     id_input = gets.chomp
-    puts 'Please enter your updated monthly income'.light_blue
+    puts 'Please enter your updated monthly income'.red
     new_income = gets.chomp
     customers.each do |customer|
       customer['monthly_income'] = new_income if customer['nab_id'] == id_input
