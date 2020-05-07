@@ -1,12 +1,5 @@
 nab_id,customer_name,monthly_income,monthly_expenses
-0001,jack douglas,8000,2000,
-0002,james anderson,4200,2500,
-,,,,
-vipul seth,5000,2000,,
-"",0,0,,
-jj,5400,5000,,
-liz,5000,2000,,
-james,7222,3100,,
-harley,6500,6000,,
-tom cruze,100000,5000,
-mark lebram,72,0,
+0001,jack douglas,7000,2000,
+0002,james anderson,7000,2500,
+
+
