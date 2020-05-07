@@ -38,14 +38,14 @@ It's very easy to install in a user's smart phone. The instructions for tha inst
 
 
 
-![alt text](../docs/Flowchart.png 'Diagram of app data flow')
+![alt text](./docs/flowchart.png 'Diagram of app data flow')
 
 ## R9
 
 Please click on the link below to check the implementation plan of the app:
 https://trello.com/b/47bWD3FQ/credit-card-application
 
-![trello board](../docs/trelloboard.png 'screen shot ')
+![trello board](./docs/trelloboard.png 'screen shot ')
 ## R10
 1. Install ruby. In class we used `rbenv` but feel free to use any ruby installation method. To verify you have ruby installed run:
 
