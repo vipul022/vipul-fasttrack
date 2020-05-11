@@ -4,11 +4,12 @@ require 'colorize'
 require "tty-prompt"
 require "tty-font"
 require './helpers.rb'
+font = TTY::Font.new(:starwars)
+pastel = Pastel.new
+puts pastel.red(font.write("WELCOME"))
+
 def menu
 prompt = TTY::Prompt.new
-  font = TTY::Font.new(:starwars)
-  pastel = Pastel.new
-  puts pastel.red(font.write("WELCOME"))
   puts
   puts '*' * 80
   puts 'WELCOME TO NAB CREDIT CARDS'.red
