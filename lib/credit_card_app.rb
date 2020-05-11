@@ -2,13 +2,17 @@
 require 'csv'
 require 'colorize'
 require "tty-prompt"
+require "tty-font"
 require './helpers.rb'
 def menu
 prompt = TTY::Prompt.new
+  font = TTY::Font.new(:starwars)
+  pastel = Pastel.new
+  puts pastel.red(font.write("WELCOME"))
   puts
-  puts '*' * 40
+  puts '*' * 80
   puts 'WELCOME TO NAB CREDIT CARDS'.red
-  puts '*' * 40
+  puts '*' * 80
   
   choices = [
      {key: 'u' ,  name: 'Apply a new credit card', value: 1},
